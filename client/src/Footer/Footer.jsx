@@ -12,16 +12,16 @@ export default function Footer() {
         <br></br>
          For any Queries Contact :{" "}
         {/* <p>  </p> */}
-        <a className="text-dark  font-bold"  style={{ marginLeft: '.5rem' }}href="https://mdbootstrap.com/">
+        <a className="text-dark  font-bold"  style={{ marginLeft: '.5rem' }}href="https://www.linkedin.com/in/aditya-sharma-95134524b/">
           Aditya
         </a>
-        <a className="text-dark font-bold"  style={{ marginLeft: '.5rem' }} href="https://mdbootstrap.com/">
+        <a className="text-dark font-bold"  style={{ marginLeft: '.5rem' }} href="https://www.linkedin.com/in/ashmit-raj-37278b235/">
           Ashmit
         </a>
-        <a className="text-dark font-bold"  style={{ marginLeft: '.5rem' }} href="https://mdbootstrap.com/">
+        <a className="text-dark font-bold"  style={{ marginLeft: '.5rem' }} href="https://www.linkedin.com/in/ashwin-ekka-5439a5247/">
           Ashwin
         </a>
-        <a className="text-dark font-bold"  style={{ marginLeft: '.5rem' }} href="https://mdbootstrap.com/">
+        <a className="text-dark font-bold"  style={{ marginLeft: '.5rem' }} href="https://www.linkedin.com/in/devesh-kailodiya-aa2277224/">
           Devesh
         </a>
         
