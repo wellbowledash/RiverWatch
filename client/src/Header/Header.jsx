@@ -19,7 +19,7 @@ export default function Header({ onSearch }) {
           
             
           <Link to="/" className="logo text-white">
-            River Watch
+            RiverWatch
           </Link>
           
           <div className="flex flex-col md:flex-row col text-white">
@@ -33,11 +33,11 @@ export default function Header({ onSearch }) {
             
             
           </div>
-          <div className="flex gap-2 max-h-12 ">
+          <div className="flex gap-2 max-h-12">
           <input
             type="text"
-            class="rounded-md text-xl"
-            placeholder="Search for a region..."
+            class="rounded-md text-s"
+            placeholder="Search for a region/river..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />

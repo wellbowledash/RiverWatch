@@ -7,7 +7,7 @@ function About() {
         <h1 class="head">About our Project</h1>
       </div>
       <p class="para">
-        Our project provides river water quality data from sensors deployed across various regions
+        Our project provides river water quality data from sensors deployed on rivers across various regions
         in the state of Uttar Pradesh. The categorization of the sensors is based on the table below-
       </p>
       <div class="main-div">
@@ -26,7 +26,7 @@ function About() {
             Drinking Water Source without conventional treatment but after
             disinfections
           </div>
-          <div class="center cat mid">A</div>
+          <div class="center cat mid">A (green)</div>
           <div class="center tol right">
             <ol>
               <li>1. Total Coliform Organism MPN/100 ml shall be 50 or less</li>
@@ -38,7 +38,7 @@ function About() {
         </div>
         <div class="flex2">
           <div class="center classi left">Outdoor Bathing (Organized)</div>
-          <div class="center cat mid">B</div>
+          <div class="center cat mid">B (yellow)</div>
           <div class="center tol right">
             <ol>
               <li>
@@ -54,7 +54,7 @@ function About() {
           <div class="center classi left">
             Drinking Water source after conventional treatment and disinfections
           </div>
-          <div class="center cat mid">C</div>
+          <div class="center cat mid">C (blue)</div>
           <div class="center tol right">
             <ol>
               <li>
@@ -70,7 +70,7 @@ function About() {
           <div class="center classi left">
             Propagation of Wild Life and Fisheries
           </div>
-          <div class="center cat mid">D</div>
+          <div class="center cat mid">D (orange)</div>
           <div class="center tol right">
             <ol>
               <li>1. pH between 6.5 and 8.5</li>
@@ -86,7 +86,7 @@ function About() {
           <div class="center classi left last">
             Irrigation Industrial Cooling, Controlled waste disposal{" "}
           </div>
-          <div class="center cat mid last">E</div>
+          <div class="center cat mid last">E (red)</div>
           <div class="center tol right last">
             <ol>
               <li>1. pH between 6.0 and 8.5</li>

@@ -26,7 +26,7 @@ export default function Newsletter() {
       <div className="max-w-[1240px] mx-auto grid lg:grid-cols-3 ">
         <div className="lg:col-span-2 my-4">
           <h1 className="md:text-2xl sm:text-1xl text-1xl font-bold py-7">
-            Enter your email to receive the data as PDF
+            Stay updated with our project!
           </h1>
         </div>
         <div className="my-4">
