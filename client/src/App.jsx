@@ -6,7 +6,7 @@ import LiveData from "./Components/LiveData";
 import Newsletter from "./Components/Newsletter";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import About from "../pages/About";
+import About from "./pages/About";
 import Footer from "./Footer/Footer";
 
 
@@ -60,7 +60,7 @@ export default function App() {
         <Route path = "/" element = {<Map changeCoordi={coordinatesChangeHandler} center = {mapCenter} className="map" />}/>
         
         
-        <Route path = "/About" element = {<About />}/>
+        <Route path = "/About" element = {<About/>}/>
       </Routes>
       <Newsletter />
       <Footer/>
