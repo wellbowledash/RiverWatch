@@ -30,9 +30,9 @@ function About() {
           <div class="center tol right">
             <ol>
               <li>1. Total Coliform Organism MPN/100 ml shall be 50 or less</li>
-              <li>2.pH between 6.5 and 8.5</li>
-              <li>3.Dissolved Oxygen 6mg/l or more</li>
-              <li>4.Biochemical oxygen demand 5 days 20o C 2mg/l or less</li>
+              <li>2. pH between 6.5 and 8.5</li>
+              <li>3. Dissolved Oxygen 6mg/l or more</li>
+              <li>4. Biochemical oxygen demand 5 days 20o C 2mg/l or less</li>
             </ol>
           </div>
         </div>
@@ -44,9 +44,9 @@ function About() {
               <li>
                 1. Total Coliforms Organism MPN/100 ml shall be 500 or less
               </li>
-              <li>2.pH between 6.5 and 8.5</li>
-              <li>3.Dissolved Oxygen 5mg/l or more</li>
-              <li>4.Biochemical Oxygen Demand 5 days 20oC 3mg/l or less</li>
+              <li>2. pH between 6.5 and 8.5</li>
+              <li>3. Dissolved Oxygen 5mg/l or more</li>
+              <li>4. Biochemical Oxygen Demand 5 days 20oC 3mg/l or less</li>
             </ol>
           </div>
         </div>
@@ -60,9 +60,9 @@ function About() {
               <li>
                 1. Total Coliforms Organism MPN/100 ml shall be 5000 or less
               </li>
-              <li>2.pH between 6.5 and 8.5</li>
-              <li>3.Dissolved Oxygen 4mg/l or more</li>
-              <li>4.Biochemical Oxygen Demand 5 days 20oC 3mg/l or less</li>
+              <li>2. pH between 6.5 and 8.5</li>
+              <li>3. Dissolved Oxygen 4mg/l or more</li>
+              <li>4. Biochemical Oxygen Demand 5 days 20oC 3mg/l or less</li>
             </ol>
           </div>
         </div>
