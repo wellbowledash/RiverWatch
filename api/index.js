@@ -4,9 +4,15 @@ import dotenv from 'dotenv'
 import regionRoutes from './routes/regions.route.js'
 import waterbodyRoutes from './routes/waterbodies.route.js'
 import sensorRoutes from './routes/sensors.route.js'
+import cors from 'cors'
 import path from 'path'
 dotenv.config()
 const app = express()
+app.use(cors({
+    origin: '*' // Allow all origins
+    // You can also specify a specific origin or an array of origins
+    // origin: ['https://your-frontend-domain.com']
+  }));
 app.use(express.json())
 mongoose.connect(process.env.MONGO).then(
     ()=>{
