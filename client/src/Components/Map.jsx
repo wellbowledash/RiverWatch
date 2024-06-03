@@ -39,7 +39,7 @@ const Map = (props) => {
   useEffect(() => {
     const fetchMarkers = async () => {
       try {
-        const res = await fetch(`/api/sensors/getallsensors`);
+        const res = await fetch(`https://river-watch-api.vercel.app/api/sensors/getallsensors`);
         const data = await res.json();
         console.log(data);
         if (res.ok) {
