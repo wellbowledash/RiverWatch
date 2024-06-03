@@ -1,29 +1,40 @@
 import React, { useEffect, useState } from "react";
-import "./Map.css";
-import {
-  GoogleMap,
-  useLoadScript,
-  MarkerF,
-  InfoWindowF,
-} from "@react-google-maps/api";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 import LiveData from "./LiveData";
 import OverallData from "./OverallData";
+import "./Map.css";
 
-const mapContainerStyle = {
-  width: "100%",
-  height: "50vh",
+// Define the custom marker icon
+const getMarkerIcon = (category) => {
+  const color = {
+    'A': 'green',
+    'B': 'yellow',
+    'C': 'blue',
+    'D': 'orange',
+    'E': 'red'
+  }[category];
+
+  return L.icon({
+    iconUrl: `http://maps.google.com/mapfiles/ms/icons/${color}-dot.png`,
+    iconSize: [40, 40],
+  });
 };
-const center = {
-  lat: 26.85, // default latitude
-  lng: 80.949997, // default longitude
+const MapUpdater = ({ center }) => {
+  const map = useMap();
+  useEffect(() => {
+    map.setView(center);
+  }, [center, map]);
+
+  return null;
 };
 
-export default function Map(props) {
-  const [markerData, setMarkerdata] = useState(null);
+
+const Map = (props) => {
+  const [markerData, setMarkerData] = useState(null);
   const [markers, setMarkers] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
-  const [infoWindowData, setInfoWindowData] = useState();
-  const [mapRef, setMapRef] = useState();
+  const [selectedRiver, setSelectedRiver] = useState(null);
 
   useEffect(() => {
     const fetchMarkers = async () => {
@@ -41,105 +52,47 @@ export default function Map(props) {
 
     fetchMarkers();
   }, []);
-  const getMarkerIcon = (category) => {
-    switch (category) {
-      case 'A':
-        return 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
-      case 'B':
-        return 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
-      case 'C':
-        return 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
-      case 'D':
-        return 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png'; // Default to red for unknown categories
-      case 'E':
-        return 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'; // Default to red for unknown categories
-    }
+
+
+
+
+  const handleMarkerClick = (marker) => {
+    setSelectedRiver(marker.riverName);
+    setMarkerData(marker);
   };
-
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: import.meta.env.GOOGLE_MAP_API_KEY,
-  });
-  // const [center,changeCenter]=useState(centerDefault);
-
-  if (loadError) {
-    return <div>Error loading maps</div>;
-  }
-
-  if (!isLoaded) {
-    return <div>Loading maps</div>;
-  }
-
-  function coordinatesHandler(event) {
-    // event.preventDefault();
-    const coordinates = {
-      latitude: event.latLng.lat().toFixed(2),
-      longitude: event.latLng.lng().toFixed(2),
-    };
-
-    // changeCenter(coordinates);
-
-    // console.log("latitide = ", event.latLng.lat().toFixed(2));
-    // console.log("longitude = ", event.latLng.lng().toFixed(2));
-    props.changeCoordi(coordinates);
-  }
-  const handleMarkerClick = (id, data, category, lat, lng) => {
-    mapRef?.panTo({ lat, lng });
-    setInfoWindowData({ id, category });
-    setIsOpen(true);
-    setMarkerdata(data);
-  };
-  const onMapLoad = (map) => {
-    setMapRef(map);
-  };
+  console.log(props.center)
 
   return (
     <div className="myDiv">
-      <GoogleMap
-        mapContainerStyle={mapContainerStyle}
-        zoom={10}
-        center={props.center}
-        onClick={coordinatesHandler}
-        onLoad={onMapLoad}
-      >
+      <MapContainer center={props.center} zoom={10} style={{ width: "100%", height: "50vh" }}>
+      <MapUpdater center={props.center} />
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
         {markers.map((marker, index) => (
-          <MarkerF
+          <Marker
             key={index}
-            position={{
-              lat: parseFloat(marker.latitude),
-              lng: parseFloat(marker.longitude),
-            }}
-            icon={{
-              url: getMarkerIcon(marker.sensorData.Category),
-              scaledSize: new window.google.maps.Size(40, 40),
-              strokeWeight: 2, // Increase the thickness of the marker outline
-              strokeOpacity: 1, // Adjust the opacity of the marker outline
-              fillOpacity: 1, // Adjust the opacity of the marker fill
-            }}
-            onClick={() => {
-              handleMarkerClick(
-                index,
-                marker,
-                marker.sensorData.Category,
-                parseFloat(marker.latitude),
-                parseFloat(marker.longitude)
-              );
+            position={[marker.latitude, marker.longitude]}
+            icon={getMarkerIcon(marker.sensorData.Category)}
+            eventHandlers={{
+              click: () => {
+                handleMarkerClick(marker);
+              },
             }}
           >
-            {isOpen && infoWindowData?.id === index && (
-              <InfoWindowF
-                onCloseClick={() => {
-                  setIsOpen(false);
-                }}
-              >
-                <h3>Category: {infoWindowData.category}</h3>
-              </InfoWindowF>
+            {marker.riverName === selectedRiver && (
+              <Popup>
+                <h3>Category: {marker.sensorData.Category}</h3>
+              </Popup>
             )}
-          </MarkerF>
+          </Marker>
         ))}
-      </GoogleMap>
-      <>{markerData && <LiveData sensor={markerData} />}
-        {markers && <OverallData sensors = {markers} />}
-      </>
+      </MapContainer>
+      {markerData && <LiveData sensor={markerData} />}
+      {markers && <OverallData sensors={markers} />}
     </div>
   );
-}
+};
+
+export default Map;

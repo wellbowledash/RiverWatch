@@ -11,8 +11,7 @@ import Footer from "./Footer/Footer";
 
 
 export default function App() {
-  const [lati, setLat] = useState("27.85");
-  const [long, setLon] = useState("81.949997");
+  
   const [mapCenter, setMapCenter] = useState({ lat: 26.85, lng: 80.95});
 
   const handleSearch = (query) => {
@@ -28,7 +27,7 @@ export default function App() {
             // Extract coordinates from the response (using the first result)
             const { lat, lon } = data[0];
             setMapCenter({ lat: parseFloat(lat), lng: parseFloat(lon) })
-            console.log(mapCenter)
+            
             ; // Update map center with the fetched coordinates
           } else {
             console.error('No results found for the search query');
@@ -37,14 +36,10 @@ export default function App() {
         .catch(error => console.error('Error fetching coordinates:', error));
     }
   };
-  function coordinatesChangeHandler(coordinates) {
-    const latitude = coordinates.latitude;
-    const longitude = coordinates.longitude;
-    setLat(latitude);
-    setLon(longitude);
-    console.log(coordinates);
-  }
+ 
   return (
+    
+    
     // <div className="App">
       
     //   <Header onSearch={handleSearch} />
@@ -57,7 +52,7 @@ export default function App() {
     <BrowserRouter>
     <Header onSearch={handleSearch} />
       <Routes>
-        <Route path = "/" element = {<Map changeCoordi={coordinatesChangeHandler} center = {mapCenter} className="map" />}/>
+        <Route path = "/" element = {<Map center = {mapCenter} className="map" />}/>
         
         
         <Route path = "/About" element = {<About/>}/>
