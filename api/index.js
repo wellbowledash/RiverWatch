@@ -5,7 +5,7 @@ import regionRoutes from './routes/regions.route.js'
 import waterbodyRoutes from './routes/waterbodies.route.js'
 import sensorRoutes from './routes/sensors.route.js'
 import cors from 'cors'
-import path from 'path'
+
 dotenv.config()
 const app = express()
 app.use(cors({
